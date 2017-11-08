@@ -133,7 +133,8 @@ public class GuiBased {
         // Set player 1 score boards
         JPanel player1Panel = new JPanel(new GridBagLayout());
         player1Panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-
+	player1Panel.setBackground(new Color(255,192,0));
+	
         JLabel p1Score[] = new JLabel[6];
         for (int i = 0; i < 6; i++) {
             gc.gridy = i + 1; gc.gridx = 0;
@@ -146,6 +147,7 @@ public class GuiBased {
         JPanel p1Board = new JPanel();
         p1Board.setLayout(new BoxLayout(p1Board, BoxLayout.Y_AXIS));
         p1Board.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+	p1Board.setBackground(new Color(255,128,0));
         JLabel p1NameLable = new JLabel(game.p1.getName() + " score: " + this.game.p1Score);
         p1NameLable.setAlignmentX(Component.CENTER_ALIGNMENT);
         p1Board.add(p1NameLable);
@@ -155,6 +157,7 @@ public class GuiBased {
         // Set player 2 score boards
         JPanel player2Panel = new JPanel(new GridBagLayout());
         player2Panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+	player2Panel.setBackground(new Color(0,192,255));
         JLabel p2Score[] = new JLabel[6];
         for (int i = 0; i < 6; i++) {
             gc.gridy = i + 1; gc.gridx = 3;
@@ -167,6 +170,7 @@ public class GuiBased {
         JPanel p2Board = new JPanel();
         p2Board.setLayout(new BoxLayout(p2Board, BoxLayout.Y_AXIS));
         p2Board.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+	p2Board.setBackground(new Color(0,172,255));
         JLabel p2NameLable = new JLabel(game.p2.getName() + " score: " + this.game.p2Score);
         p2NameLable.setAlignmentX(Component.CENTER_ALIGNMENT);
         p2Board.add(p2NameLable);
@@ -174,6 +178,7 @@ public class GuiBased {
 
         // Set game info board
         JPanel display = new JPanel();
+	display.setBackground(new Color(100,50,0));
         JTextArea text = new JTextArea(20, 26);
         JScrollPane scroll = new JScrollPane(text);
         text.setEditable(false);
@@ -183,7 +188,7 @@ public class GuiBased {
         JPanel controlPanel = new JPanel();
         controlPanel.setLayout(new BoxLayout(controlPanel, BoxLayout.Y_AXIS));
 	controlPanel.setBackground(new Color(0,155,100));
-        controlPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        controlPanel.setBorder(BorderFactory.createEmptyBorder(10, 40, 10, 40));
 
         JButton roll = new JButton("Roll");
 	JButton home = new JButton("Home");

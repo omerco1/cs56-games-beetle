@@ -182,10 +182,12 @@ public class GuiBased {
         // Add control buttons
         JPanel controlPanel = new JPanel();
         controlPanel.setLayout(new BoxLayout(controlPanel, BoxLayout.Y_AXIS));
+	controlPanel.setBackground(new Color(0,155,100));
         controlPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         JButton roll = new JButton("Roll");
-        JButton exit = new JButton("Exit");
+	JButton home = new JButton("Home");
+	JButton exit = new JButton("Exit");
         JLabel info = new JLabel();
 
         roll.addActionListener(e -> {
@@ -209,10 +211,15 @@ public class GuiBased {
                 chooseContinue(frame, "Tie!");
             }
         });
+
+	home.addActionListener(e -> {frame.setVisible(false);run();});
+	
         exit.addActionListener(e -> System.exit(0));
 
+	
         roll.setAlignmentX(Component.CENTER_ALIGNMENT);
-        exit.setAlignmentX(Component.CENTER_ALIGNMENT);
+	home.setAlignmentX(Component.CENTER_ALIGNMENT);
+	exit.setAlignmentX(Component.CENTER_ALIGNMENT);
         info.setAlignmentX(Component.CENTER_ALIGNMENT);
         picLabel.setAlignmentX(Component.CENTER_ALIGNMENT);     //align the image for the game
 
@@ -222,6 +229,7 @@ public class GuiBased {
         info.setText(infoStr);
 
         controlPanel.add(roll);
+	controlPanel.add(home);
         controlPanel.add(exit);
         controlPanel.add(info);
         controlPanel.add(picLabel);         //add the image for the game

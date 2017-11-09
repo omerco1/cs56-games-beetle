@@ -23,6 +23,8 @@ import java.awt.*;
 public class GuiBased {
 
     public BeetleGame game;
+    
+    //public TextBased game_control; 
 
     GuiBased(BeetleGame game) {
         this.game = game;
@@ -86,7 +88,7 @@ public class GuiBased {
         if (game.numPlayer == 2)
             game.p2Name = (String)JOptionPane.showInputDialog(
                     frame, "Enter Player 2's name", "Player 2",
-                    JOptionPane.PLAIN_MESSAGE, null, null, "Player 2"
+                    JOptionPane.PLAIN_MESSAGE, null, null, "Player 2"  
             );
 
         frame.setVisible(false);
@@ -188,7 +190,7 @@ public class GuiBased {
         JPanel controlPanel = new JPanel();
         controlPanel.setLayout(new BoxLayout(controlPanel, BoxLayout.Y_AXIS));
 	controlPanel.setBackground(new Color(0,155,100));
-        controlPanel.setBorder(BorderFactory.createEmptyBorder(10, 40, 10, 40));
+        controlPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         JButton roll = new JButton("Roll");
 	JButton home = new JButton("Home");
@@ -216,9 +218,13 @@ public class GuiBased {
                 chooseContinue(frame, "Tie!");
             }
         });
-
-	home.addActionListener(e -> {frame.setVisible(false);run();});
 	
+	home.addActionListener(e -> {
+	    frame.setVisible(false);
+	    run();
+	    this.game = new BeetleGame(0,0);
+	});
+
         exit.addActionListener(e -> System.exit(0));
 
 	
@@ -241,7 +247,7 @@ public class GuiBased {
 
         // Create the main window
         frame.getContentPane().add(p1Board, BorderLayout.WEST);
-        frame.getContentPane().add(p2Board, BorderLayout.EAST);
+        frame.getContentPane().add(p2Board, BorderLayout.EAST); 
         frame.getContentPane().add(controlPanel, BorderLayout.SOUTH);
         frame.getContentPane().add(display, BorderLayout.CENTER);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

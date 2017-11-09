@@ -5,8 +5,10 @@ import edu.ucsb.cs56.projects.games.beetle.player.Beetle;
 import edu.ucsb.cs56.projects.games.beetle.player.Ladybug;
 import edu.ucsb.cs56.projects.games.beetle.player.Person;
 
+import javax.sound.sampled.*; 
 import javax.swing.*;
 import java.awt.*;
+import java.io.*; 
 
 /**
  * Class for the GUI based game version.
@@ -200,7 +202,7 @@ public class GuiBased {
         roll.addActionListener(e -> {
             text.append(game.p1.addPart() + "\n");
             text.append(game.p2.addPart() + "\n\n");
-
+	    music(); 
             for (int i = 0; i < 6; i++) {
                 p1Score[i].setText(Integer.toString(game.p1.getPartNeed(i)));
                 p2Score[i].setText(Integer.toString(game.p2.getPartNeed(i)));
@@ -221,7 +223,7 @@ public class GuiBased {
 	
 	home.addActionListener(e -> {
 	    frame.setVisible(false);
-	    run();
+	    run(); 
 	    this.game = new BeetleGame(0,0);
 	});
 
@@ -284,5 +286,20 @@ public class GuiBased {
             game.setGameType(option);
             mainFrame();
         }
+    }
+    public void music() {
+     	new Thread(new Runnable() { 
+
+	    public void run() { 
+		try { 
+		    File file = new File("roll.wav");
+		    Clip clip = AudioSystem.getClip();
+		    clip.open(AudioSystem.getAudioInputStream(file));
+		    
+		    //Thread.sleep(clip.getMicrosecondLength());
+		    clip.start();
+		}catch (Exception e) { System.err.println(e.getMessage()); } 
+	    }
+	}).start();
     }
 }

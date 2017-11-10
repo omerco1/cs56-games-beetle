@@ -26,8 +26,6 @@ public class GuiBased {
 
     public BeetleGame game;
     
-    //public TextBased game_control; 
-
     GuiBased(BeetleGame game) {
         this.game = game;
     }
@@ -100,39 +98,96 @@ public class GuiBased {
     
     /**
     * The main frame that handles all of the GUI game data. 
-    */
-    
+    */	
+
     public void mainFrame() {
+       
+        JFrame frame = new JFrame();  
+	ImageIcon[] picture = new ImageIcon[10];  
 
-        JFrame frame = new JFrame();
-        ImageIcon picture;
-        JLabel picLabel = new JLabel();
-
-        GridBagConstraints gc = new GridBagConstraints();
+	JLabel picLabel0= new JLabel();
+	JLabel picLabel1 = new JLabel();
+	JLabel picLabel2 = new JLabel();
+	JLabel picLabel3 = new JLabel();
+	JLabel picLabel4 = new JLabel();
+	JLabel picLabel5 = new JLabel();
+	JLabel picLabel6 = new JLabel();
+	JLabel picLabel7 = new JLabel();
+	GridBagConstraints gc = new GridBagConstraints();
         gc.gridwidth = 2;
+	
+	//this is God awful... fix 
+	switch (game.type) {
+        case 0: //CompoundIcon????
+            game.p1 = new Ant(game.p1Name);
+            game.p2 = new Ant(game.p2Name);
+	    // picture = new ImageIcon(new ImageIcon("pictures/ant.jpg").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
+	    //put this in for loop later
+	    picture[0] = new ImageIcon(new ImageIcon("pictures/pictures/ant/thorax.png").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
+	    picture[1] = new ImageIcon(new ImageIcon("pictures/pictures/ant/head.png").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
+	    picture[2] = new ImageIcon(new ImageIcon("pictures/pictures/ant/legs.png").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
+	    picture[3] = new ImageIcon(new ImageIcon("pictures/pictures/ant/eyes.png").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
+	    picture[4] = new ImageIcon(new ImageIcon("pictures/pictures/ant/antenna.png").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
+            picture[5] = new ImageIcon(new ImageIcon("pictures/pictures/ant/abdomen.png").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
+	    picture[6] = new ImageIcon(new ImageIcon("pictures/pictures/ant/white.png").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
+	    break;
+        case 1:
+            game.p1 = new Beetle(game.p1Name);
+            game.p2 = new Beetle(game.p2Name);
+	    picture[0] = new ImageIcon(new ImageIcon("pictures/pictures/Beetle/body.png").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
+            picture[1] = new ImageIcon(new ImageIcon("pictures/pictures/Beetle/head.png").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
+            picture[2] = new ImageIcon(new ImageIcon("pictures/pictures/Beetle/legs.png").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
+            picture[4] = new ImageIcon(new ImageIcon("pictures/pictures/Beetle/antenna.png").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
+	    picture[6] = new ImageIcon(new ImageIcon("pictures/pictures/Beetle/white.png").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
+	    break;
+        case 2:
+            game.p1 = new Ladybug(game.p1Name);
+            game.p2 = new Ladybug(game.p2Name);
+	    picture[0] = new ImageIcon(new ImageIcon("pictures/pictures/ladybug/body.png").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
+            picture[1] = new ImageIcon(new ImageIcon("pictures/pictures/ladybug/head.png").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
+            picture[2] = new ImageIcon(new ImageIcon("pictures/pictures/ladybug/legs.png").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
+            //picture[3] = new ImageIcon(new ImageIcon("pictures/pictures/ladybug/eyes.png").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
+            picture[4] = new ImageIcon(new ImageIcon("pictures/pictures/ladybug/antenna.png").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
+            picture[5] = new ImageIcon(new ImageIcon("pictures/pictures/ladybug/wings.png").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
+	    picture[6] = new ImageIcon(new ImageIcon("pictures/pictures/ladybug/white.png").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
+	    break; 
+	default:
+            game.p1 = new Person(game.p1Name);
+            game.p2 = new Person(game.p2Name);
+	    picture[0] = new ImageIcon(new ImageIcon("pictures/pictures/person/body.png").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
+            picture[1] = new ImageIcon(new ImageIcon("pictures/pictures/person/head.png").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
+            picture[2] = new ImageIcon(new ImageIcon("pictures/pictures/person/legs.png").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
+            picture[3] = new ImageIcon(new ImageIcon("pictures/pictures/person/eyes.png").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
+            picture[4] = new ImageIcon(new ImageIcon("pictures/pictures/person/mouth.png").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
+            picture[5] = new ImageIcon(new ImageIcon("pictures/pictures/person/arms.png").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
+            picture[6] = new ImageIcon(new ImageIcon("pictures/pictures/person/white.png").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
+	    break; 
+	}
 
-        switch (game.type) {
-            case 0:
-                game.p1 = new Ant(game.p1Name);
-                game.p2 = new Ant(game.p2Name);
-                picture = new ImageIcon(new ImageIcon("pictures/ant.jpg").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
-                picLabel.setIcon(picture); break;
-            case 1:
-                game.p1 = new Beetle(game.p1Name);
-                game.p2 = new Beetle(game.p2Name);
-                picture = new ImageIcon(new ImageIcon("pictures/beetle.png").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
-                picLabel.setIcon(picture); break;
-            case 2:
-                game.p1 = new Ladybug(game.p1Name);
-                game.p2 = new Ladybug(game.p2Name);
-                picture = new ImageIcon(new ImageIcon("pictures/ladybug.jpg").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
-                picLabel.setIcon(picture); break;
-            case 3:
-                game.p1 = new Person(game.p1Name);
-                game.p2 = new Person(game.p2Name);
-                picture = new ImageIcon(new ImageIcon("pictures/human.png").getImage().getScaledInstance(200,150, Image.SCALE_DEFAULT));
-                picLabel.setIcon(picture); break;
-        }
+	//initialize JLabels w/ ImageIcon obj
+	picLabel0.setIcon(picture[0]); //for loop????                                                                                                                 
+	picLabel1.setIcon(picture[1]);
+	picLabel2.setIcon(picture[2]);
+	picLabel3.setIcon(picture[3]);
+	picLabel4.setIcon(picture[4]);
+	picLabel5.setIcon(picture[5]);
+	picLabel6.setIcon(picture[6]);
+	
+	//p2 pic objects
+	JLabel picLabel_0 = new JLabel();
+        JLabel picLabel_1 = new JLabel();
+        JLabel picLabel_2 = new JLabel();
+        JLabel picLabel_3 = new JLabel();
+        JLabel picLabel_4 = new JLabel();
+        JLabel picLabel_5 = new JLabel();
+        JLabel picLabel_6 = new JLabel();
+        picLabel_0.setIcon(picture[0]);
+        picLabel_1.setIcon(picture[1]);
+        picLabel_2.setIcon(picture[2]);
+        picLabel_3.setIcon(picture[3]);
+        picLabel_4.setIcon(picture[4]);
+        picLabel_5.setIcon(picture[5]);
+        picLabel_6.setIcon(picture[6]);
 
         // Set player 1 score boards
         JPanel player1Panel = new JPanel(new GridBagLayout());
@@ -154,7 +209,8 @@ public class GuiBased {
 	p1Board.setBackground(new Color(255,128,0));
         JLabel p1NameLable = new JLabel(game.p1.getName() + " score: " + this.game.p1Score);
         p1NameLable.setAlignmentX(Component.CENTER_ALIGNMENT);
-        p1Board.add(p1NameLable);
+        p1Board.setSize(5, 15);
+	p1Board.add(p1NameLable);
         p1Board.add(player1Panel);
 
 
@@ -177,6 +233,7 @@ public class GuiBased {
 	p2Board.setBackground(new Color(0,172,255));
         JLabel p2NameLable = new JLabel(game.p2.getName() + " score: " + this.game.p2Score);
         p2NameLable.setAlignmentX(Component.CENTER_ALIGNMENT);
+	p2Board.setSize(5, 15);
         p2Board.add(p2NameLable);
         p2Board.add(player2Panel);
 
@@ -202,12 +259,102 @@ public class GuiBased {
         roll.addActionListener(e -> {
             text.append(game.p1.addPart() + "\n");
             text.append(game.p2.addPart() + "\n\n");
-	    music(); 
+	    
+	    int roll1 = game.p1.getRoll(); 
+	    int roll2 = game.p2.getRoll(); 
+	    
+	    switch (roll1) { 
+	    case 0:
+		if (game.p1.getPartNeed(0) == 0) { 
+		    picLabel0.setVisible(true);
+		    break; 
+		}
+		break; 
+	    case 1: 
+		if (game.p1.getPartNeed(1) == 0) {
+                    picLabel1.setVisible(true);
+                    break;
+		}
+		break; 
+	    case 2:
+		if (game.p1.getPartNeed(2) == 0) {
+                    picLabel2.setVisible(true);
+                    break;
+		}
+                break;
+	    case 3:
+                if (game.p1.getPartNeed(3) == 0) {
+                    picLabel3.setVisible(true);
+                    break;
+		}
+                break;
+	    case 4:
+		if (game.p1.getPartNeed(4) == 0) {
+                    picLabel4.setVisible(true);
+		    break; 
+		}
+                break;
+	    case 5:
+                if (game.p1.getPartNeed(5) == 0) {
+                    picLabel5.setVisible(true);
+                    break;
+		}
+                break;
+	    default: 
+		break; 
+	    } 
+		
+
+	    //p2
+	    switch (roll2) {
+            case 0:
+                if (game.p2.getPartNeed(0) == 0) {
+                    picLabel_0.setVisible(true);
+                    break;
+                }
+                break;
+            case 1:
+                if (game.p2.getPartNeed(1) == 0) {
+                    picLabel_1.setVisible(true);
+                    break;
+                }
+                break;
+            case 2:
+                if (game.p2.getPartNeed(2) == 0) {
+                    picLabel_2.setVisible(true);
+                    break;
+                }
+                break;
+            case 3:
+                if (game.p2.getPartNeed(3) == 0) {
+                    picLabel_3.setVisible(true);
+                    break;
+                }
+                break;
+            case 4:
+                if (game.p2.getPartNeed(4) == 0) {
+                    picLabel_4.setVisible(true);
+                    break;
+                }
+                break;
+            case 5:
+                if (game.p2.getPartNeed(5) == 0) {
+                    picLabel_5.setVisible(true);
+                    break;
+                }
+                break;		
+	    default: 
+		break; 
+	    }
+
+	    //roll sound
+	    music();
+	    
             for (int i = 0; i < 6; i++) {
                 p1Score[i].setText(Integer.toString(game.p1.getPartNeed(i)));
                 p2Score[i].setText(Integer.toString(game.p2.getPartNeed(i)));
             }
-
+	    
             if (game.p1.isWin() && !game.p2.isWin()) {
                 game.p1Score++;
                 chooseContinue(frame, game.p1.getName() + " won!");
@@ -234,7 +381,7 @@ public class GuiBased {
 	home.setAlignmentX(Component.CENTER_ALIGNMENT);
 	exit.setAlignmentX(Component.CENTER_ALIGNMENT);
         info.setAlignmentX(Component.CENTER_ALIGNMENT);
-        picLabel.setAlignmentX(Component.CENTER_ALIGNMENT);     //align the image for the game
+        //picLabel0.setAlignmentX(Component.CENTER_ALIGNMENT);     //align the image for the game
 
         String infoStr = "";
         for (int i = 0; i < 6; i++)
@@ -245,17 +392,90 @@ public class GuiBased {
 	controlPanel.add(home);
         controlPanel.add(exit);
         controlPanel.add(info);
-        controlPanel.add(picLabel);         //add the image for the game
+        //controlPanel.add(picLabel);         //add the image for the game
+	
+	GridBagLayout layout  = new GridBagLayout();
+	JPanel panel = new JPanel(layout);
+	GridBagConstraints c = new GridBagConstraints();
+
+	frame.getContentPane().add(panel);
+	//	frame.getContentPane().setLayout(new GridBagLayout());
+	
+	//adding p1 panel with constraints to 0,0 of gridlayout
+	c.fill = GridBagConstraints.BOTH;
+	c.weighty = .5; 
+	c.gridx = 0;
+	c.gridy = 0;
+	panel.add(p1Board, c); 
+	
+	//set weight 
+ 
+	c.weightx = 1;
+	c.gridx = 1;
+	c.gridy = 0;
+	panel.add(display, c);
+ 
+	//panel board 2
+	c.weightx = 0; 
+	c.gridx = 2; 
+	c.gridy = 0; 
+	panel.add(p2Board, c);
+	
+       
+	c.gridx = 0;
+        c.gridy = 1;
+	//panel.add(picLabel_2, c);
+	panel.add(picLabel0, c); 
+	panel.add(picLabel1, c); 
+	panel.add(picLabel2, c); 
+	panel.add(picLabel3, c); 
+	panel.add(picLabel4, c); 
+	panel.add(picLabel5, c); 
+	panel.add(picLabel6, c); 
+	picLabel0.setVisible(false); 
+	picLabel1.setVisible(false);
+	picLabel2.setVisible(false);
+	picLabel3.setVisible(false);
+	picLabel4.setVisible(false);
+	picLabel5.setVisible(false);
+	picLabel6.setVisible(true);
+
+	c.weightx = 1;
+	c.gridx = 1;
+        c.gridy = 1;
+	panel.add(controlPanel, c);
+
+	c.weightx = 0;
+	c.gridx = 2;
+        c.gridy = 1;
+	panel.add(picLabel_0, c);
+	panel.add(picLabel_1, c);
+	panel.add(picLabel_2, c);
+	panel.add(picLabel_3, c);
+	panel.add(picLabel_4, c);
+	panel.add(picLabel_5, c);
+	panel.add(picLabel_6, c);
+	picLabel_0.setVisible(false); 
+	picLabel_1.setVisible(false);
+	picLabel_2.setVisible(false);
+	picLabel_3.setVisible(false);
+	picLabel_4.setVisible(false);
+	picLabel_5.setVisible(false);
+	picLabel_6.setVisible(true);
 
         // Create the main window
-        frame.getContentPane().add(p1Board, BorderLayout.WEST);
-        frame.getContentPane().add(p2Board, BorderLayout.EAST); 
-        frame.getContentPane().add(controlPanel, BorderLayout.SOUTH);
-        frame.getContentPane().add(display, BorderLayout.CENTER);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        // frame.getContentPane().add(p1Board, panel);//frame.getContentPane().add(p1Board, BorderLayout.WEST);
+        // frame.getContentPane().add(p2Board, panel);//frame.getContentPane().add(p2Board, BorderLayout.EAST); 
+        // frame.getContentPane().add(controlPanel, BorderLayout.SOUTH);
+        // frame.getContentPane().add(display, BorderLayout.CENTER);
+        
+
+
+
+	frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setTitle("Beetle Game");
         frame.setSize(750, 480);
-        frame.setResizable(false);
+        frame.setResizable(true);
         frame.setVisible(true);
     }
 

@@ -74,47 +74,33 @@ public class GuiBased {
 	JLabel welcome_label = new JLabel("Welcome to the Beetle Game!");
 	welcome_label.setFont(new Font("Serif", Font.PLAIN, 30));
         gc.gridx = 1; gc.gridy = 0; panel.add(welcome_label, gc);
-        //gc.insets = new Insets(5,0,0,0);
 	gc.gridy = 1; panel.add(ant, gc);
         gc.gridy = 2; panel.add(beetle, gc);
         gc.gridy = 3; panel.add(person, gc);
         gc.gridy = 4; panel.add(ladybug, gc);
-	//gc.insets = new Insets(10,0,0,0);
+	gc.insets = new Insets(5,0,0,0);
         gc.gridy = 5; panel.add(exit, gc);
-	gc.insets = new Insets(0,50,0,0);
+	gc.insets = new Insets(0,40,0,0);
 	JPanel pic2panel = new JPanel();
 	pic2panel.setBackground(new Color(0,0,0));
 	pic2panel.add(picLabel2);
 	JPanel pic4panel = new JPanel();
         pic4panel.setBackground(new Color(0,0,255));
+	pic4panel.setBorder(BorderFactory.createLineBorder(Color.black));
         pic4panel.add(picLabel4);
 	gc.gridx = 0; gc.gridy = 2; panel.add(pic2panel, gc);
 	gc.gridx = 0; gc.gridy = 4; panel.add(pic4panel, gc);
-	gc.insets = new Insets(10,220,0,0);
+	gc.insets = new Insets(10,250,0,0);
 	JPanel pic1panel = new JPanel();
         pic1panel.setBackground(new Color(153,51,255));
+	pic1panel.setBorder(BorderFactory.createLineBorder(Color.black));
         pic1panel.add(picLabel1);
-        JPanel pic3panel = new JPanel();
+	JPanel pic3panel = new JPanel();
         pic3panel.setBackground(new Color(255,153,51));
+	pic3panel.setBorder(BorderFactory.createLineBorder(Color.black, 4));
         pic3panel.add(picLabel3);
 	gc.gridx = 2; gc.gridy = 1; gc.weightx = 1; panel.add(pic1panel, gc);
 	gc.gridx = 2; gc.gridy = 3; gc.weightx = 1; panel.add(pic3panel, gc);
-
-	/*JPanel left_pics = new JPanel(new GridBagLayout());
-	//left_pics.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        GridBagConstraints gcl = new GridBagConstraints();
-	gcl.insets = new Insets(40,0,0,0);
-	gcl.gridy = 2; left_pics.add(picLabel2, gcl);
-	gcl.gridy = 4; left_pics.add(picLabel4, gcl);
-	gc.gridx = 0; gc.gridy = 2; gc.weighty = 1; panel.add(left_pics, gc);
-
-	JPanel right_pics = new JPanel(new GridBagLayout());
-	//right_pics.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        GridBagConstraints gcr = new GridBagConstraints();
-        gcr.insets = new Insets(40,0,0,0);
-        gcr.gridy = 1; right_pics.add(picLabel1, gcr);
-        gcr.gridy = 3; right_pics.add(picLabel3, gcr);
-	gc.gridx = 5; gc.gridy = 2; gc.weighty = 1; panel.add(right_pics, gc);*/
 	
         frame.getContentPane().add(panel, BorderLayout.CENTER);
         panel.setBackground(new Color(0,155,100));

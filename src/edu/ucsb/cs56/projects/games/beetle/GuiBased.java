@@ -72,8 +72,7 @@ public class GuiBased {
     * Choose number of players.
     */
     public void choosePlayers(JFrame frame) {
-
-        Object[] options = {"Single Player", "Two Players"};
+	Object[] options = {"Single Player", "Two Players"};
         game.numPlayer = JOptionPane.showOptionDialog(
                 frame, "Make your decision!", "Make your decision!",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
@@ -84,14 +83,19 @@ public class GuiBased {
                 frame, "Enter Player 1's name", "Player 1",
                 JOptionPane.PLAIN_MESSAGE, null, null, "Player 1"
         );
-
-        if (game.numPlayer == 2)
+	if (game.p1Name == null) 
+	    return; 
+        if (game.numPlayer == 2) {
+	    
             game.p2Name = (String)JOptionPane.showInputDialog(
                     frame, "Enter Player 2's name", "Player 2",
                     JOptionPane.PLAIN_MESSAGE, null, null, "Player 2"  
             );
-
-        frame.setVisible(false);
+	    if (game.p2Name == null) 
+		return; 
+	}
+	
+	frame.setVisible(false);
         mainFrame();
     }
 
@@ -553,7 +557,7 @@ public class GuiBased {
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
                 null, options, options[0]
         );
-
+       
         frame.setVisible(false);
 
         if (isContinue == 1) {
@@ -563,8 +567,8 @@ public class GuiBased {
             Object[] choices = {"Ant", "Beetle", "Ladybug", "Person"};
             int option = JOptionPane.showOptionDialog(
                     frame, "Enter a new game mode.", "Enter a new game mode",
-                    JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
-            game.setGameType(option);
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]); 
+	    game.setGameType(option);
             mainFrame();
         }
     }

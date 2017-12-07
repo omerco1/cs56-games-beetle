@@ -41,3 +41,11 @@ The main feature that can be improved is improving the graphics. It would be nic
 A couple of bugs that exist is that the exit window pops up right when the game ends, which can cause confusion as to who won the game. Also, after a game ends and the user selects a new level, the window for entering a name reappears. These are further explained in the Issues section ing Github.
 
 As of now, each level has its own Player class. However, these Player classes are very similar to each other. There is possibility to combine them all into one generic class or create a parent class that they inherit from in order to keep the code DRY.
+
+## F17 Final Remarks
+
+Upon running the game, a GUI window is opened prompting the user to select an insect/person to play as. Not immediately obvious, but the insects users can select from correspond to different difficulties. The game then prompts the user with JOption windows asking him/her whether they want single or double player, followed by another JOption window that prompts for the player names. Thereafter, the main game window is opened and the user can press the roll GUI button and play. 
+
+Many design improvements have been made to make the game more intuitive and more playable. However, there exist major game logic issues that should be addressed in the future. For starters, as mentioned before, the difficulty portion of the game is not immediately clear, more importantly it is not implemented well. Each level is actually its own class that extends the "Player" class, which makes it easy to add new difficulties. However, with regard to the insects, each bug class's partNeed array is initialized with the same value, so the only thing that is different about them is the picture that appears. This is doesn't make the game anymore difficult for the user which should be changed. 
+
+Moreover, some sort of skill element should be added to the game to make it more fun and interesting. That way JUnit tests could be added to ensure the game runs more smoothly. Finally, the mainFrame() method in the GuiBased.java needs refactoring. The method does far too many things at once and should better emulate the Single Responsibility Principle, it should delegate operations to other methods. 
